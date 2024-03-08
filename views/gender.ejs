@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= page %></title>
+
+    <link rel="stylesheet" href="/css/gender.css">
+    <!-- Font-awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+    <style>
+        #hero {
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div id="header">
+        <div class="container">
+            <div class="logo">
+                <h3><i class="fa-solid fa-bag-shopping"></i> Varkala</h3>
+            </div>
+            <ul class="links">
+                <li class="link active"><a href="/home">Home</a></li>
+                <li class="link linkBg">
+                    <div class="name">Shop <i class="fa-solid fa-chevron-down"></i></div>
+                    <div class="linkBgUl">
+                        <div class="top"></div>
+                        <a class="linkBgLi" href="/gender/men"><i class="fa-solid fa-arrow-right"></i>
+                            <span>Man</span></a>
+                        <a class="linkBgLi" href="/gender/women"><i class="fa-solid fa-arrow-right"></i>
+                            <span>Women</span></a>
+                    </div>
+                </li>
+                <% if(!user) { %>
+                    <li class="link"><a href="/grancvel/register">Sing Up</a></li>
+                    <li class="link"><a href="/grancvel/login" class="link">Sing In</a></li>
+                    <% } %>
+            </ul>
+
+            <div class="icons">
+                <a href="/wishes">
+                    <div class="icon">
+                        <div class="count"><span class="heartCount">
+                                <%= likesProducts.length %>
+                            </span></div>
+                        <i class="fa-regular fa-heart"></i>
+                    </div>
+                </a>
+                <a href="/bought">
+                    <div class="icon">
+                        <div class="count"><span class="buyCount">
+                                <%= boughtProducts.length %>
+                            </span></div>
+                        <i class="fa-solid fa-bag-shopping"></i>
+                    </div>
+                </a>
+                <div class="icon profilBtn">
+                    <i class="fa-regular fa-user"></i>
+                </div>
+                <div class="icon menuBtn">
+                    <i class="fa-solid fa-bars"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="profil">
+        <div class="content">
+            <% if(user) { %>
+                <div class="profilTitle">
+                    <h3>Profil</h3>
+                    <i class="fa-solid fa-xmark close"></i>
+                </div>
+                <span class="name">name: <%= user.name %></span>
+                <span class="email">email: <%= user.email %></span>
+                <a href="/logout"><button class="btn">log out</button></a>
+                <% } else { %>
+                    <div class="profilTitle">
+                        <h3>You Don't Have A Profil</h3>
+                        <i class="fa-solid fa-xmark close"></i>
+                    </div>
+                    <% } %>
+        </div>
+    </div>
+
+    <div class="responsiveMenu">
+        <div class="aside">
+            <div class="top">
+                <div class="logo">
+                    <h3><i class="fa-solid fa-bag-shopping"></i> Varkala</h3>
+                </div>
+                <i class="fa-solid fa-xmark close"></i>
+            </div>
+            <div class="links">
+                <a href="/home" class="link">Home</a>
+                <div class="link linkBg">
+                    <div class="name">Shop <i class="fa-solid fa-chevron-down"></i></div>
+                    <div class="linkBgUl">
+                        <a href="/gender/men" class="linkBgLi"><i class="fa-solid fa-arrow-right"></i>
+                            <span>Man</span></a>
+                        <a href="/gender/women" class="linkBgLi"><i class="fa-solid fa-arrow-right"></i>
+                            <span>Women</span></a>
+                    </div>
+                </div>
+                <% if(!user) { %>
+                    <a href="/grancvel/register" class="link">Sing Up</a>
+                    <a href="/grancvel/login" class="link">Sing In</a>
+                    <% } %>
+            </div>
+
+            <div class="bottom">
+                <div class="icons">
+                    <div class="icon"><i class="fa-brands fa-facebook-f"></i></div>
+                    <div class="icon"><i class="fa-brands fa-instagram"></i></div>
+                    <div class="icon"><i class="fa-brands fa-whatsapp"></i></div>
+                </div>
+                <p>Samsa was a travelling salesman - and above it there hung a picture that he had recently cut out of
+                    an illustrated magazine and housed in a nice, gilded frame.</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="hero" style="background-image: url('<%= img %>');">
+        <div class="container">
+            <h2>
+                <%= title %>
+            </h2>
+        </div>
+
+        <div class="down">
+            <a href="#products"><i class="fa-solid fa-chevron-down"></i></a>
+        </div>
+    </div>
+
+    
+    <div class="profil">
+        <div class="content">
+            <% if(user) { %>
+                <div class="profilTitle">
+                    <h3>Profil</h3>
+                    <i class="fa-solid fa-xmark close"></i>
+                </div>
+                <span class="name">name: <%= user.name %></span>
+                <span class="email">email: <%= user.email %></span>
+                <a href="/logout"><button class="btn">log out</button></a>
+                <% } else { %>
+                    <div class="profilTitle">
+                        <h3>You Don't Have A Profil</h3>
+                        <i class="fa-solid fa-xmark close"></i>
+                    </div>
+                    <% } %>
+        </div>
+    </div>
+
+    <a class="topBtn" href="#hero">
+        <i class="fa-solid fa-chevron-up"></i>
+    </a>
+
+    <div id="products" class="section">
+        <div class="container">
+            <div class="productsTitle">
+                <h3>This All Man Products</h3>
+
+                <div class="filter">
+                    <% for(let i = 0; i < types.length; i++) { %>
+                        <span class="filterBtn" data-typeBtn="<%= types[i] %>"><%= types[i] %></span>
+                    <% } %>    
+                </div>
+            </div>
+
+
+            <div class="boxes">
+                <% for(let i=0; i < products.length; i++) { %>
+                    <div class="card" id="<%= products[i].id %>" data-type="<%= products[i].type %>">
+                        <div class="img">
+                            <img src="<%= products[i].image %>" alt="">
+
+                            <div class="icons">
+                                <a href="/gallery/<%= products[i].id %>">
+                                    <div class="icon"><i class="fa-solid fa-eye"></i></div>
+                                </a>
+                                <div class="icon wishBtn"><i class="fa-regular fa-heart"></i></div>
+                            </div>
+                        </div>
+                        <div class="content">
+                            <p>
+                                <%= products[i].model %>
+                            </p>
+                            <h3>
+                                <%= products[i].name %>
+                            </h3>
+                            <div class="stars">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                            </div>
+                            <div class="bottom">
+                                <div class="price"><span>$<%= products[i].price %></span></div>
+                                <div class="add buyBtns"><i class="fa-solid fa-cart-shopping"></i></div>
+                            </div>
+                        </div>
+                    </div>
+                    <% } %>
+            </div>
+        </div>
+    </div>
+
+
+    <footer>
+        <div class="container">
+            <div class="card card1">
+                <div class="logo">
+                    <h3><i class="fa-solid fa-bag-shopping"></i> Varkala</h3>
+                </div>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. At itaque temporibus.</p>
+                <div class="inputBox">
+                    <input type="email" placeholder="Please Enter Your email">
+                    <i class="fa-regular fa-envelope"></i>
+                </div>
+            </div>
+            <div class="card">
+                <h3>Shop</h3>
+                <ul>
+                    <li><a>For Women</a></li>
+                    <li><a>For Men</a></li>
+                    <li><a>Stores</a></li>
+                    <li><a>Our Blog</a></li>
+                    <li><a>Shop</a></li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3>Shop</h3>
+                <ul>
+                    <li><a>For Women</a></li>
+                    <li><a>For Men</a></li>
+                    <li><a>Stores</a></li>
+                    <li><a>Our Blog</a></li>
+                    <li><a>Shop</a></li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3>Shop</h3>
+                <ul>
+                    <li><a>For Women</a></li>
+                    <li><a>For Men</a></li>
+                    <li><a>Stores</a></li>
+                    <li><a>Our Blog</a></li>
+                    <li><a>Shop</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footerBottom">
+            <div class="container">
+                <p>© 2023 Your company. All rights reserved.</p>
+                <p>This Project was Made by <span>Lina Petrosyan</span></p>
+            </div>
+        </div>
+    </footer>
+
+
+    <script>
+        let boxes = document.querySelector('.boxes');
+        const filterBtn = document.querySelectorAll('.filterBtn');
+        const productsFilter = '<%- JSON.stringify(products)%>';
+
+        filterBtn[0].classList.add('active')
+        function removeAllActiveButtons() {
+            filterBtn.forEach(val => {
+                val.classList.remove('active');
+            })
+        }
+
+        filterBtn.forEach(val => {
+            val.addEventListener('click', () => {
+                removeAllActiveButtons();
+                val.classList.add('active');
+                const typeNameBtn = val.getAttribute('data-typeBtn');
+                document.querySelectorAll('#products .card').forEach(card => {
+                    card.getAttribute('data-type').search(typeNameBtn) === -1 ? card.style.display = 'none' : card.style.display = 'flex';
+                })
+            })
+        })
+
+        const likesProducts = '<%- JSON.stringify(likesProducts) %>'
+        const likesProductParse = JSON.parse(likesProducts);
+        const heartCount = document.querySelector('.heartCount');
+        likesProductParse.forEach(likeId => {
+            const card = document.getElementById(likeId.product_id);
+            if(card) {
+                card.querySelector('.wishBtn').classList.add('active');
+            }
+        })
+
+        let likesBtn = document.querySelectorAll('.card .wishBtn');
+        function recursia(elem) {
+            if (elem.parentElement.className.search('card') !== -1) {
+                return elem.parentElement;
+            }
+            return recursia(elem.parentElement);
+        }
+        likesBtn.forEach(like => {
+            like.addEventListener('click', () => {
+                const user = '<%- JSON.stringify(user)%>'
+                const productId = recursia(like).getAttribute('id');
+                if (user == '') {
+                    return window.location.href = '/grancvel/login';
+                }
+
+                if(like.getAttribute('class').search('active') !== -1) {
+                    like.classList.remove('active');
+                    fetch('/wishes', {
+                        method: 'delete',
+                        headers: {
+                            'content-type': 'application/json'
+                        },
+                        body: JSON.stringify({ productId, userId: JSON.parse(user).id })
+                    }).then(() => {
+                        heartCount.innerText = +heartCount.innerText - 1;
+                    })
+                    return;
+                }
+                like.classList.add('active');
+                fetch('/wishes', {
+                    method: 'POST',
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify({ productId, userId: JSON.parse(user).id })
+                }).then(() => {
+                    heartCount.innerText = +heartCount.innerText + 1;
+                })
+            })
+        })
+        
+        const boughtProducts = '<%- JSON.stringify(boughtProducts) %>'
+        const boughtProductsParse = JSON.parse(boughtProducts);
+        const buyCount = document.querySelector('.buyCount');
+
+        boughtProductsParse.forEach(buyId => {
+            const card = document.getElementById(buyId.product_id);
+            card ? card.querySelector('.add').classList.add('active') : false;
+        } )
+
+        const buys = document.querySelectorAll('.add')
+        buys.forEach(buy => {
+            buy.addEventListener('click', () => {
+                const user = '<%- JSON.stringify(user)%>'
+                const productId = recursia(buy).getAttribute('id');
+                if (user == '') {
+                    return window.location.href = '/grancvel/login';
+                }
+
+                if(buy.getAttribute('class').search('active') !== -1) {
+                    buy.classList.remove('active');
+                    fetch('/bought', {
+                        method: 'delete',
+                        headers: {
+                            'content-type': 'application/json'
+                        },
+                        body: JSON.stringify({ productId, userId: JSON.parse(user).id })
+                    }).then(() => {
+                        buyCount.innerText = +buyCount.innerText - 1;
+                    })
+                    return;
+                }
+                buy.classList.add('active');
+                fetch('/bought', {
+                    method: 'POST',
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify({ productId, userId: JSON.parse(user).id })
+                }).then(() => {
+                    buyCount.innerText =  +buyCount.innerText + 1;
+                })
+            })
+        })
+      
+    </script>
+    <script src="./scripts/navbar.js"></script>
+    <script src="../scripts/profil.js"></script>
+</body>
+
+</html>

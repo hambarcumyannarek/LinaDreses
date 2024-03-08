@@ -1,0 +1,222 @@
+@import './all';
+@import './navbar';
+@import './footer';
+
+
+#wishes {
+    padding-top: 150px;
+    .container {
+        display: flex;
+        flex-direction: column;
+        gap: 80px;
+
+        .title {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            flex-direction: column;
+
+            h2 {
+                font-size: 2.5em;
+                color: var(--black);
+            }
+
+            p {
+                font-size: 1.2em;
+                color: var(--light-black);
+            }            
+        }
+
+        .boxes {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(250px, 1fr));
+            grid-gap: 40px;
+            position: relative;
+
+            .card {
+                padding: 10px;
+                border-radius: 15px;
+                box-shadow: var(--box-shadow);
+                display: flex;
+                flex-direction: column;
+                position: relative;
+
+                .likeBtn {
+                    width: 60px;
+                    height: 60px;
+                    border-radius: 50%;
+                    @include center();
+                    background: var(--white);
+                    box-shadow: 0 0 10px 1px rgba(0,0,0,.1), 0 0 10px 1px rgba(0,0,0,.07) inset;
+                    position: absolute;
+                    right: -18px; top: -18px;
+                    z-index: 2;
+
+                    i {
+                        font-size: 1.3em;
+                        color: var(--web-color);
+                    }
+                }
+
+                .img {
+                    width: 100%;
+                    height: 250px;
+                    border-radius: 15px;
+                    overflow: hidden;
+                    position: relative;
+
+                    img {
+                        width: 100%;
+                        height: 100%;
+                        object-fit: cover;
+                        border-radius: 15px;
+                        background-size: cover;
+                    }
+
+                    .icons {
+                        display: flex;
+                        flex-direction: column;
+                        gap: 10px;
+                        position: absolute;
+                        top: 10px; right: -100%;
+                        transition: all .5s;
+                    }
+                }
+
+                .content {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 10px;
+                    padding: 15px 0 0px 0;
+
+                    p {
+                        color: var(--light-black);
+                    }
+
+                    h3 {
+                        font-size: 1.3em;
+                        color: var(--black);
+                    }
+                    .stars {
+                        display: flex;
+                        gap: 5px;
+                        flex-wrap: nowrap;
+
+                        i {
+                            color: gold;
+                            font-size: 1.1em;
+                        }
+                    }
+
+                    .bottom {
+                        width: 100%;
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+
+                        .likeEndBtns {
+                            display: flex;
+                            flex-wrap: nowrap;
+                            gap: 10px;
+
+                            .btn {
+                                width: 50px;
+                                height: 50px;
+                                border-radius: 50%;
+                                @include center();
+                                padding: 10px;
+                                background: var(--light-web-color);
+                                cursor: pointer;
+                                transition: all .5s;
+    
+                                &.active {
+                                    background: var(--web-color);
+    
+                                    i {
+                                        color: var(--white);
+                                    }
+                                }
+                                
+                                &:hover {
+                                    background: var(--web-color);
+    
+                                    i {
+                                        color: var(--white);
+                                    }
+                                }
+                                i {
+                                    color: var(--web-color);
+                                    font-size: 1em;
+                                }
+                            }
+                        }
+
+                        .price {
+                            font-size: 1.3em;
+                            color: var(--web-color);
+                            font-family: sans-serif;
+                        }
+                    }
+
+                    .deleteButton {
+                        width: 100%;
+                        padding: 15px;
+                        border: 2px solid var(--web-color);
+                        background-color: var(--web-color);
+                        color: var(--white);
+                        border-radius: 5px;
+                        cursor: pointer;
+                        transition: all .5s;
+
+                        &:hover {
+                            background-color: var(--white);
+                            color: var(--web-color);  
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+
+
+@media screen and (max-width: 1250px) {
+    #wishes {
+        .container {
+            .boxes {
+                grid-template-columns: repeat(3, minmax(250px, 1fr));
+            }
+        }
+    }
+}
+
+
+@media screen and (max-width: 950px) {
+    #wishes {
+        .container {
+            .title {
+                p {
+                    text-align: start;
+                }
+            }
+            .boxes {
+                grid-template-columns: repeat(2, minmax(250px, 1fr));
+            }
+        }
+    }
+}
+
+
+@media screen and (max-width: 600px) {
+
+    #wishes {
+        .container {
+            .boxes {
+                grid-template-columns: repeat(1, minmax(250px, 1fr));
+            }
+        }
+    }
+}
+

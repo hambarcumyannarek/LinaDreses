@@ -1,0 +1,244 @@
+@import './all';
+@import './navbar';
+@import './footer';
+
+
+
+#bought {
+    padding-top: 150px;
+    .container {
+        display: flex;
+        flex-direction: column;
+        gap: 80px;
+
+        .title {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            flex-direction: column;
+
+            h2 {
+                font-size: 2.5em;
+                color: var(--black);
+            }
+
+            p {
+                font-size: 1.2em;
+                color: var(--light-black);
+                text-align: start;
+            }            
+        }
+
+        .boxes {
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-gap: 25px;
+
+            .card {
+                display: flex;
+                flex-wrap: nowrap;
+                gap: 20px;
+                padding: 15px;
+                border-radius: 15px;
+                box-shadow: var(--box-shadow);
+                
+                .img {
+                    max-width: 230px;
+                    width: 100%;
+                    border-radius: 15px;
+                    overflow: hidden;
+
+                    img {
+                        width: 100%;
+                        height: 100%;
+                        background-size: cover;
+                        background-position: center;
+                        object-fit: cover;
+                        border-radius: 15px;
+                    }
+                }
+
+                .content {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 40px;
+                    max-width: 350px;
+                    width: 100%;
+
+                    .contentTop {
+                        display: flex;
+                        flex-direction: column;
+                        gap: 8px;
+
+                        h3 {
+                            font-size: 1.3em;
+                            color: var(--black);
+                        }
+
+                        p {
+                            color: var(--light-black);
+                        }
+
+                        .stars {
+                            display: flex;
+                            gap: 5px;
+                            flex-wrap: nowrap;
+    
+                            i {
+                                color: gold;
+                                font-size: 1.1em;
+                            }
+                        }
+                    }
+
+                    .calculiator {
+                        display: flex;
+                        flex-wrap: nowrap;
+                        align-items: center;
+                        gap: 15px;
+
+                        &Box {
+                            display: flex;
+                            box-shadow: var(--box-shadow);
+                            flex-wrap: nowrap;
+
+                            .btn {
+                                width: 40px;
+                                height: 40px;
+                                @include center();
+                                font-size: 1.2em;
+                            }
+
+                            .minuse, .pluse {
+                                cursor: pointer;
+                                background: var(--web-color);
+                                color: var(--white);
+                                transition: all .5s;
+
+                                &:hover {
+                                    background: var(--light-black);
+                                }
+                            }
+
+                            .minuse {
+                                border-top-left-radius: 5px;
+                                border-bottom-left-radius: 5px;
+                            }
+                            .pluse {
+                                border-top-right-radius: 5px;
+                                border-bottom-right-radius: 5px;
+                            }
+                        }
+
+                        .thisPrice {
+                            font-size: 1.3em;
+                            color: var(--light-black);
+                        }
+                    }
+
+                    .buttons {
+                        width: 100%;
+                        display: grid;
+                        grid-template-columns: 1fr 1fr;
+                        grid-gap: 15px;
+
+                        button {
+                            padding: 12px 30px;
+                            border-radius: 5px;
+                            box-shadow: var(--box-shadow);
+                            text-align: center;
+                            font-size: 1.1em;
+                            cursor: pointer;
+                            background: var(--web-color);
+                            border: 2px solid var(--web-color);
+                            color: var(--white);
+                            transition: all .5s;
+                            &:hover {
+                                background: var(--white);
+                                color: var(--web-color);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        .bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 10px;
+            border-radius: 15px;
+            box-shadow: var(--box-shadow);
+
+            h3 {
+                font-size: 1.5em;
+                color: var(--light-black);
+            }
+
+            .allProductsInfo {
+                display: flex;
+                flex-wrap: nowrap;
+                gap: 50px;
+
+                p {
+                    font-size: 1.3em;
+                    color: var(--light-black);
+                }
+            }
+        }
+    }
+}
+
+
+
+@media screen and (max-width: 950px) {
+    #bought {
+        .container {
+            .title {
+                p {
+                    text-align: start;
+                }
+            }
+
+            .boxes {
+                grid-template-columns: 1fr;
+
+                .card {
+                    .content {
+                        max-width: 100%;
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+
+@media screen and (max-width: 500px) {
+    #bought {
+        .container {
+            .title {
+                p {
+                    text-align: start;
+                }
+            }
+
+            .boxes {
+                grid-template-columns: 1fr;
+
+                .card {
+                    flex-direction: column;
+
+                    .img {
+                        max-width: 100%;
+                        width: 100%;
+                        height: 250px;
+                    }
+                }
+            }
+        }
+    }
+}

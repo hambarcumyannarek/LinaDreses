@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bought</title>
+
+    
+    <link rel="stylesheet" href="css/bought.css">
+     <!-- Font-awesome -->
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+
+</head>
+<body>
+
+    
+    <div id="header">
+        <div class="container">
+            <div class="logo">
+                <h3><i class="fa-solid fa-bag-shopping"></i> Varkala</h3>
+            </div>
+            <ul class="links">
+                <li class="link"><a href="/home">Home</a></li>
+                <li class="link linkBg">
+                    <div class="name">Shop <i class="fa-solid fa-chevron-down"></i></div>
+                    <div class="linkBgUl">
+                        <div class="top"></div>
+                        <a href="/gender/men" class="linkBgLi"><i class="fa-solid fa-arrow-right"></i> <span>Man</span></a>
+                        <a href="/gender/women" class="linkBgLi"><i class="fa-solid fa-arrow-right"></i> <span>Women</span></a>
+                    </div>
+                </li>
+                
+                <% if(!user) { %>
+                    <li class="link"><a href="/grancvel/register">Sing Up</a></li>
+                    <li class="link"><a href="/grancvel/login" class="link">Sing In</a></li>
+                <% } %>
+            </ul>
+
+            <div class="icons">
+                <a href="/wishes">
+                    <div class="icon">
+                        <div class="count"><span class="heartCount"><%= wishesLength %></span></div>
+                        <i class="fa-regular fa-heart"></i>
+                    </div>
+                </a>
+  
+                <a href="/bought">
+                    <div class="icon">
+                        <div class="count"><span class="buyCount"><%= boughtLength %></span></div>
+                        <i class="fa-solid fa-bag-shopping"></i>
+                    </div>
+                </a>
+                <div class="icon profilBtn">
+                    <i class="fa-regular fa-user"></i>
+                </div>
+                <div class="icon menuBtn">
+                    <i class="fa-solid fa-bars"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="responsiveMenu">
+        <div class="aside">
+            <div class="top">
+                <div class="logo">
+                    <h3><i class="fa-solid fa-bag-shopping"></i> Varkala</h3>
+                </div>
+                <i class="fa-solid fa-xmark close"></i>
+            </div>
+            <div class="links">
+                <a href="/home" class="link">Home</a>
+                <div class="link linkBg">
+                    <div class="name">Shop <i class="fa-solid fa-chevron-down"></i></div>
+                    <div class="linkBgUl">
+                        <a href="/gender/men" class="linkBgLi"><i class="fa-solid fa-arrow-right"></i> <span>Man</span></a>
+                        <a href="/gender/women" class="linkBgLi"><i class="fa-solid fa-arrow-right"></i> <span>Women</span></a>
+                    </div>
+                </div>
+                <% if(!user) { %>
+                    <a href="/grancvel/register" class="link">Sing Up</a>
+                    <a href="/grancvel/login" class="link">Sing In</a>
+                <% } %>
+            </div>
+
+            <div class="bottom">
+                <div class="icons">
+                    <div class="icon"><i class="fa-brands fa-facebook-f"></i></div>
+                    <div class="icon"><i class="fa-brands fa-instagram"></i></div>
+                    <div class="icon"><i class="fa-brands fa-whatsapp"></i></div>
+                </div>
+                <p>Samsa was a travelling salesman - and above it there hung a picture that he had recently cut out of an illustrated magazine and housed in a nice, gilded frame.</p>
+            </div>
+        </div>
+    </div>
+
+ 
+    <div class="profil">
+        <div class="content">
+            <% if(user) { %>
+                <div class="profilTitle">
+                    <h3>Profil</h3>
+                    <i class="fa-solid fa-xmark close"></i>
+                </div>
+                <span class="name">name: <%= user.name %></span>
+                <span class="email">email: <%= user.email %></span>
+                <a href="/logout"><button class="btn">log out</button></a>
+                <% } else { %>
+                    <div class="profilTitle">
+                        <h3>You Don't Have A Profil</h3>
+                        <i class="fa-solid fa-xmark close"></i>
+                    </div>
+                    <% } %>
+        </div>
+    </div>
+    <a class="topBtn" href="#hero">
+        <i class="fa-solid fa-chevron-up"></i>
+    </a>
+
+    <div id="bought" class="section">
+        <div class="container">
+            <div class="title">
+                <h2>BoughtList</h2>
+                <p>You have <span class="productsNum"><%= boughtLength %></span> items in your boughtList.  See a version of this template for signed-in customer.</p>
+            </div>
+
+            <div class="boxes">
+                <% for(let i = 0; i < products.length; i++) { %>
+                    <div class="card" id="<%= products[i].id %>">
+                        <div class="img"><img src="<%= products[i].image%>" alt=""></div>
+                        <div class="content">
+                            <div class="content">
+                                <div class="contentTop">
+                                    <h3><%= products[i].name%></h3>
+                                    <p><%= products[i].model%></p>
+                                    <div class="stars">
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                    </div>
+                                </div>
+    
+                                <div class="calculiator">
+                                    <div class="calculiatorBox">
+                                        <div class="minuse btn">-</div>
+                                        <div class="count btn"><%= products[i].count %></div>
+                                        <div class="pluse btn">+</div>
+                                    </div>
+                                    <h4> = $<span class="thisPrice" data-price="<%= products[i].price %>"><%= products[i].price %></span></h4>
+                                </div>
+    
+                                <div class="buttons">
+                                    <button class="delete">delete</button>
+                                    <a href="/gallery/<%= products[i].id%>"><button>show</button></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                <% } %>    
+            </div>
+
+            <div class="bottom">
+                <h3>Total</h3>
+                <div class="allProductsInfo">
+                    <p class="allCount"><%= boughtAllCount %></p>
+                    <p>$<span class="allPrice">0</span></p>
+                </div>
+            </div>
+    </div>
+</div>
+
+    <footer>
+        <div class="container">
+            <div class="card card1">
+                <div class="logo">
+                    <h3><i class="fa-solid fa-bag-shopping"></i> Varkala</h3>
+                </div>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. At itaque temporibus.</p>
+                <div class="inputBox">
+                    <input type="email" placeholder="Please Enter Your email">
+                    <i class="fa-regular fa-envelope"></i>
+                </div>
+            </div>
+            <div class="card">
+                <h3>Shop</h3>
+                <ul>
+                    <li><a>For Women</a></li>
+                    <li><a>For Men</a></li>
+                    <li><a>Stores</a></li>
+                    <li><a>Our Blog</a></li>
+                    <li><a>Shop</a></li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3>Shop</h3>
+                <ul>
+                    <li><a>For Women</a></li>
+                    <li><a>For Men</a></li>
+                    <li><a>Stores</a></li>
+                    <li><a>Our Blog</a></li>
+                    <li><a>Shop</a></li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3>Shop</h3>
+                <ul>
+                    <li><a>For Women</a></li>
+                    <li><a>For Men</a></li>
+                    <li><a>Stores</a></li>
+                    <li><a>Our Blog</a></li>
+                    <li><a>Shop</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footerBottom">
+            <div class="container">
+                <p>© 2023 Your company. All rights reserved.</p>
+                <p>This Project was Made by <span>Lina Petrosyan</span></p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+
+        let productsNum = document.querySelector('.productsNum');
+        let buyCount = document.querySelector('.buyCount')
+        const cards = document.querySelectorAll('#bought .card');
+
+        const allCount = document.querySelector('.allCount');
+        const allPrice = document.querySelector('.allPrice');
+
+        cards.forEach(card => { 
+            let count = +card.querySelector('.count').innerText;
+            let price = +card.querySelector('.thisPrice').getAttribute('data-price');
+            allPrice.innerText = +allPrice.innerText + count *  price;
+            card.querySelector('.thisPrice').innerText = count * price;
+        })
+        cards.forEach(card => {
+            let count = card.querySelector('.count');
+            let pluseminuseBtns = card.querySelectorAll('.btn');
+
+            pluseminuseBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    let countNum = +count.textContent;
+                    let cardGin = card.querySelector('.thisPrice');
+
+                    if(btn.className.search('minuse') !== -1 && countNum > 1) {
+                        count.innerText = --countNum;
+                        allCount.innerText--;
+                        allPrice.innerText -= +cardGin.getAttribute('data-price');
+                        cardGin.innerText = countNum * (+cardGin.getAttribute('data-price'));
+                    }
+                    if(btn.className.search('pluse') !== -1) {
+                        count.innerText = ++countNum;
+                        allCount.innerText++;
+                        allPrice.innerText = +allPrice.innerText + (+cardGin.getAttribute('data-price'));
+                        cardGin.innerText = countNum * (+cardGin.getAttribute('data-price'));
+                    }
+                    if(true) {
+                        const productId = recursia(btn).getAttribute('id');
+                        const user = '<%- JSON.stringify(user)%>'
+
+                        fetch('/bought', {
+                            method: 'put',
+                            headers: {
+                                'content-type': 'application/json'
+                            },
+                            body: JSON.stringify({count: +count.innerText, userId: JSON.parse(user).id, productId: +productId})
+                        })
+                    }
+                })
+            })
+        })
+
+        function recursia(elem) {
+            if (elem.parentElement.className.search('card') !== -1) {
+                return elem.parentElement;
+            }
+            return recursia(elem.parentElement);
+        }
+
+        document.querySelectorAll('.delete').forEach(btn => {
+            btn.addEventListener('click', () => {     
+                const productId = recursia(btn).getAttribute('id');
+                const user = '<%- JSON.stringify(user)%>'
+
+                fetch('/bought', {
+                    method: 'delete',
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify({ userId: JSON.parse(user).id, productId })
+                }).then(() => {
+                    document.getElementById(productId).style.display = 'none';
+                    buyCount.innerText = +buyCount.innerText - 1;
+                    productsNum.innerText = buyCount.innerText;
+                    allPrice.innerText -= +document.getElementById(productId).querySelector('.thisPrice').innerText;
+                    allCount.innerText -= +document.getElementById(productId).querySelector('.count').innerText;
+                })
+            })
+        })
+
+    </script>
+    <script src="./scripts/navbar.js"></script>
+    <script src="./scripts/profil.js"></script>
+</body>
+</html>

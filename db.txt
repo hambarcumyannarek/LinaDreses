@@ -1,0 +1,52 @@
+table users;
++----------+---------------+------+-----+---------+----------------+
+| Field    | Type          | Null | Key | Default | Extra          |
++----------+---------------+------+-----+---------+----------------+
+| id       | int           | NO   | PRI | NULL    | auto_increment |
+| name     | varchar(500)  | NO   |     | NULL    |                |
+| email    | varchar(500)  | NO   |     | NULL    |                |
+| password | varchar(1500) | NO   |     | NULL    |                |
++----------+---------------+------+-----+---------+----------------+
+
+
+
+
+table products;
+
++--------+--------------+------+-----+---------+----------------+
+| Field  | Type         | Null | Key | Default | Extra          |
++--------+--------------+------+-----+---------+----------------+
+| id     | int          | NO   | PRI | NULL    | auto_increment |
+| name   | varchar(150) | NO   |     | NULL    |                |
+| price  | float        | NO   |     | NULL    |                |
+| brand  | varchar(150) | NO   |     | NULL    |                |
+| gender | varchar(100) | NO   |     | NULL    |                |
+| type   | varchar(500) | NO   |     | NULL    |                |
+| images | text         | NO   |     | NULL    |                |
++--------+--------------+------+-----+---------+----------------+
+
+
+
+
+table wishes;
+
++-----------------+------+------+-----+---------+----------------+
+| Field           | Type | Null | Key | Default | Extra          |
++-----------------+------+------+-----+---------+----------------+
+| id              | int  | NO   | PRI | NULL    | auto_increment |
+| product_user_id | int  | NO   | MUL | NULL    |                |
+| product_id      | int  | NO   | MUL | NULL    |                |
++-----------------+------+------+-----+---------+----------------+
+
+
+
+table bought;
+
++-----------------+------+------+-----+---------+----------------+
+| Field           | Type | Null | Key | Default | Extra          |
++-----------------+------+------+-----+---------+----------------+
+| id              | int  | NO   | PRI | NULL    | auto_increment |
+| product_user_id | int  | NO   | MUL | NULL    |                |
+| product_id      | int  | NO   | MUL | NULL    |                |
+| count           | int  | NO   |     | NULL    |                |
++-----------------+------+------+-----+---------+----------------+

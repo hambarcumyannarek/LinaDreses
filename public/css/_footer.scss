@@ -1,0 +1,181 @@
+// <======== footer ========>
+
+footer {
+    padding: 100px 20px 150px 20px;
+    width: 100%;
+    background: var(--dark-white);  
+    position: relative;
+    @include center();
+
+    .footerBottom {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        padding: 15px 20px;
+        width: 100%;
+        @include center();
+        box-shadow: var(--box-shadow);
+
+        .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+
+            p {
+                font-size: 1.1em;
+                color: var(--light-black);
+
+                span {
+                    color: var(--web-color);
+                }
+            }
+        }
+    }
+
+    .container {
+        display: grid;
+        grid-template-columns: 400px repeat(3, 1fr);
+        grid-gap: 150px;
+
+        .card {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+
+            h3 {
+                font-size: 1.4em;
+                color: var(--black);
+                font-weight: normal;
+                margin-bottom: 10px;
+            }
+
+            ul {
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+                li{
+                    a {
+                        position: relative;
+                        cursor: pointer;
+                        font-size: 1.1em;
+                        transition: all 0.5s;
+        
+                        &:hover {
+                            color: var(--web-color);
+                        }
+        
+                        &::before {
+                            content: '';
+                            width: 0;
+                            position: absolute;
+                            bottom: -5px;
+                            right: 0;
+                            height: 2px;
+                            background: var(--black);
+                            transition: all 0.5s;
+                        }
+        
+                        &:hover:before {
+                            content: '';
+                            width: 100%;
+                            left: 0;
+                            background: var(--web-color);
+                        }
+                    }
+                }
+            }
+        }
+
+        .card1 {
+            .logo {
+                h3 {
+                    font-size: 1.6em;
+                    color: var(--web-color);
+    
+                    i {
+                        margin-right: 5px;
+                    }
+                }
+            }
+
+            p {
+                font-size: 1.1em;
+                color: var(--light-black);
+            }
+
+            .inputBox {
+                position: relative;
+                width: 100%;
+
+                input {
+                    width: 100%;
+                    border: none;
+                    border-bottom: 2px solid var(--light-black);
+                    padding: 20px 40px 10px 0px;
+                    background: transparent;
+                    font-size: 1.1em;
+                    transition: all .5s;
+
+                    &:focus {
+                        border-bottom: 2px solid var(--web-color);
+                    }
+                }
+
+
+                i {
+                    position: absolute;
+                    top: 50%; right: 0;
+                    font-size: 1.3em;
+                    color: var(--light-black);
+                    transform: translateY(-50%);
+                }
+            }
+        }
+    }
+}
+
+
+@media screen and (max-width: 1250px) {
+    footer {
+        .container {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 30px;
+
+            .card {
+                width: 200px;
+            }
+
+            .card1 {
+                max-width: 400px;
+                width: 100%;
+            }
+        }
+    }
+}
+
+
+@media screen and (max-width: 700px) {
+    footer {
+        .container {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+    }
+}
+
+
+@media screen and (max-width: 400px) {
+    footer {
+        .footerBottom {
+            .container {
+                p {
+                    font-size: .9em;
+                }
+            }
+        }
+    }
+}

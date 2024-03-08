@@ -1,0 +1,168 @@
+@import './all';
+@import './navbar';
+@import './footer';
+
+#header {
+    background: var(--white);
+    box-shadow: var(--box-shadow);
+}
+#register {
+    background-image: url('../images/light-grey-terrazzo.png');
+    background-size: contain;
+    background-repeat: repeat;
+    padding: 150px 20px 80px 20px;
+    .container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        background: var(--white);
+        padding: 40px;
+        grid-gap: 50px;
+        border-radius: 15px;
+        box-shadow: var(--box-shadow);
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+            .titleReg {
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+
+                h3 {
+                    font-size: 2em;
+                    color: var(--black);
+
+                    .wb {
+                        color: var(--web-color);
+                    }
+                }
+
+                p {
+                    color: var(--light-black);
+                }
+            }
+
+            .inputs {
+                display: flex;
+                flex-direction: column;
+                gap: 30px;
+                max-width: 600px;
+                width: 100%;
+
+                .inputBox {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 5px;
+
+                    p {
+                        color: var(--light-black);
+                    }
+
+                    .input {
+                        position: relative;
+
+                        &.errore {
+                            input {
+                                border: 2px solid var(--red);
+                           
+                                &:focus {
+                                    border: 2px solid var(--red);
+                                }
+                            }
+                            
+                            
+                            i {
+                                color: var(--red);
+                            }
+                        }
+
+                        i {
+                            position: absolute;
+                            top: 50%;
+                            transform: translateY(-50%);
+                            right: 15px;
+                            font-size: 1.5em;
+                            color: var(--light-black);
+                            cursor: pointer;
+                        }
+                        input {
+                            width: 100%;
+                            border: 2px solid var(--light-black);
+                            padding: 15px 50px 15px 15px;
+                            font-size: 1.1em;
+                            transition: all .5s;
+                            
+                            &:focus {
+                                border: 2px solid var(--web-color);
+    
+                                &~i{
+                                    color: var(--web-color);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            button {
+                max-width: 200px;
+                padding: 18px 20px;
+                border-radius: 5px;
+                box-shadow: var(--box-shadow);
+                color: var(--white);
+                font-size: 1.1em;
+                cursor: pointer;
+                border: 2px solid var(--web-color);
+                background: var(--web-color);
+                transition: all .5s;
+
+                &:hover {
+                    color: var(--web-color);
+                    background: var(--white);
+                }
+            }
+        }
+
+        .map {
+            border-radius: 15px;
+            overflow: hidden;
+            iframe {
+                width: 100%;
+                max-height: 735px;
+                height: 100%;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 950px) {
+    #register {
+        .container {
+            grid-template-columns: 1fr;
+
+            .map {
+                height: 500px;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 450px) {
+    #register {
+        .container {
+            grid-template-columns: 1fr;
+
+            form {
+                .titleReg {
+                    h3 {
+                        font-size: 1.5em;
+                    }
+                }
+            }
+            .map {
+                height: 300px;
+            }
+        }
+    }
+}

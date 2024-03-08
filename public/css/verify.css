@@ -1,0 +1,256 @@
+* {
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  box-sizing: border-box;
+  outline: 0;
+  border: none;
+  list-style: none;
+  font-family: sans-serif;
+}
+
+:root {
+  --white: #fff;
+  --dark-white: rgb(248,249,250);
+  --web-color: rgba(70,163,156);
+  --light-web-color: rgba(70,163,156, 0.3);
+  --black: #212529;
+  --light-black: rgba(0, 0, 0, 0.7);
+  --red: #dc3545;
+  --pink: #e83e8c;
+  --box-shadow: 0 0 10px 5px rgba(0,0,0,.1);
+  --light-box-shadow: 0 0 5px 3px rgba(0,0,0,.07);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.section {
+  width: 100%;
+  min-height: 100vh;
+  padding: 80px 20px 20px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  max-width: 1300px;
+  width: 100%;
+}
+.container .title {
+  max-width: 750px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  text-align: center;
+}
+.container .title h2 {
+  font-size: 3.5em;
+  color: var(--black);
+}
+.container .title p {
+  color: var(--light-black);
+  line-height: 28px;
+  font-size: 1.1em;
+}
+
+.profil {
+  max-width: 300px;
+  width: 100%;
+  max-height: 165px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 0 20px 5px rgba(0, 0, 0, 0.2);
+  position: fixed;
+  right: -100%;
+  top: 110px;
+  z-index: 10;
+  bottom: calc(-100% - 100px);
+  visibility: visible;
+  opacity: 0;
+  transition: all 0.5s;
+}
+.profil.active {
+  visibility: visible;
+  opacity: 1;
+  right: 20px;
+}
+.profil .content {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+}
+.profil .content .profilTitle {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.profil .content .profilTitle h3 {
+  font-size: 1.3em;
+  font-weight: normal;
+  text-align: center;
+}
+.profil .content .profilTitle i {
+  font-size: 1.5em;
+  color: var(--black);
+  cursor: pointer;
+  transition: all 0.5s;
+}
+.profil .content .profilTitle i:hover {
+  color: var(--web-color);
+}
+.profil .content .btn {
+  width: 100%;
+  padding: 10px 20px;
+  color: #fff;
+  cursor: pointer;
+  text-align: center;
+  text-transform: capitalize;
+  border-radius: 5px;
+  border: 2px solid var(--web-color);
+  background: var(--web-color);
+  font-size: 1.1em;
+  transition: all 0.5s;
+}
+.profil .content .btn:hover {
+  background: white;
+  color: var(--web-color);
+}
+
+.topBtn {
+  position: fixed;
+  top: -100%;
+  right: 20px;
+  opacity: 0;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  background: rgb(50, 50, 50);
+  color: var(--white);
+  cursor: pointer;
+  box-shadow: var(--box-shadow);
+  z-index: 10;
+  transition: all 0.5s;
+}
+.topBtn.active {
+  opacity: 1;
+  top: 90%;
+}
+.topBtn i {
+  font-size: 1.2em;
+}
+.topBtn:hover {
+  background: var(--web-color);
+}
+
+@media screen and (max-width: 1250px) {
+  .container {
+    max-width: 1000px;
+  }
+}
+@media screen and (max-width: 950px) {
+  .container {
+    max-width: 700px;
+  }
+}
+@media screen and (max-width: 450px) {
+  .container .title h2 {
+    font-size: 12vw;
+  }
+  .container .title p {
+    font-size: 1em;
+  }
+}
+.section {
+  background: var(--white);
+}
+.section .card {
+  max-width: 400px;
+  width: 100%;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  background: var(--grey);
+  box-shadow: 0px 0 15px 5px rgba(0, 0, 0, 0.2);
+  border-radius: 15px;
+}
+.section .card .title {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 10px;
+}
+.section .card .title i {
+  font-size: 3em;
+  color: var(--web-color);
+}
+.section .card .title h3 {
+  font-size: 1.5em;
+  color: var(--black);
+  font-weight: normal;
+}
+.section .card .inputs {
+  max-width: 100%;
+  width: 100%;
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 5px;
+}
+.section .card .inputs input {
+  width: 87.5px;
+  border: 2px solid rgba(0, 0, 0, 0.2);
+  font-size: 1.1em;
+  text-align: center;
+  padding: 20px 5px;
+  border-radius: 5px;
+}
+.section .card .inputs input.err {
+  border: 2px solid var(--red);
+}
+.section .card .inputs input:disabled {
+  background: var(--white);
+}
+.section .card .inputs input:focus {
+  border: 2px solid var(--web-color);
+}
+.section .card .button {
+  width: 100%;
+  padding: 18px 20px;
+  background: rgba(82, 140, 243, 0.2);
+  pointer-events: none;
+  border-radius: 5px;
+  box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.01);
+  color: var(--white);
+  cursor: pointer;
+  cursor: no-drop;
+  font-size: 16px;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: all 0.5s;
+}
+.section .card .button.active {
+  pointer-events: painted;
+  cursor: pointer;
+  background: var(--web-color);
+}
+.section .card .button.active:hover {
+  background: var(--white);
+  border: 2px solid var(--web-color);
+  color: var(--web-color);
+}/*# sourceMappingURL=verify.css.map */
